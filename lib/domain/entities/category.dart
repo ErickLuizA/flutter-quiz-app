@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class Categories extends Equatable {
+class Category extends Equatable {
   final String name;
   final String image;
 
-  Categories({
+  Category({
     @required this.name,
     @required this.image,
   });
