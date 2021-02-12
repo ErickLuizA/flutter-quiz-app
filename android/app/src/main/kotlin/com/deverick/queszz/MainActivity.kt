@@ -1,4 +1,4 @@
-package com.deverick.Queszz
+package com.deverick.queszz
 
 import io.flutter.embedding.android.FlutterActivity
 
