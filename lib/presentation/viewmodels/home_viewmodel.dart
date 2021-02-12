@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:Queszz/domain/usecases/load_categories.dart';
 
-enum State { Loading, Error, Success }
+enum UIState { Loading, Error, Success }
 
 class HomeViewModel extends ChangeNotifier {
   final LoadCategories _loadCategories;
@@ -11,17 +11,17 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this._loadCategories);
 
   List<Category> categoryList = List<Category>();
-  State state = State.Loading;
+  UIState uiState = UIState.Loading;
 
   Future<void> loadCategories() async {
     final result = await _loadCategories.load();
 
     result.fold(
       (failure) {
-        state = State.Error;
+        uiState = UIState.Error;
       },
       (success) {
-        state = State.Success;
+        uiState = UIState.Success;
         categoryList = success;
       },
     );

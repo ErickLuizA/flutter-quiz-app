@@ -1,6 +1,7 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:flutter/material.dart';
+import 'package:Queszz/presentation/viewmodels/home_viewmodel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,7 +10,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    Provider.of<HomeViewModel>(context, listen: false).loadCategories();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var viewModel = Provider.of<HomeViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -90,6 +100,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w300,
                 ),
               ),
+              if (viewModel.uiState == UIState.Loading)
+                CircularProgressIndicator(),
+              if (viewModel.uiState == UIState.Loading) Text("Error"),
+              if (viewModel.uiState == UIState.Success)
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: viewModel.categoryList.length,
+                    itemBuilder: (context, index) {
+                      final category = viewModel.categoryList[index];
+
+                      return Text(category.name);
+                    },
+                  ),
+                ),
             ],
           ),
         ),

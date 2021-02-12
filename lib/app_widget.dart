@@ -25,8 +25,8 @@ class App extends StatelessWidget {
       ],
       initialRoute: '/home',
       routes: {
-        '/home': (_) => ChangeNotifierProvider(
-              create: (_) => makeHomeViewModel(),
+        '/home': (context) => ChangeNotifierProvider(
+              create: (context) => makeHomeViewModel(),
               child: HomeScreen(),
             ),
       },

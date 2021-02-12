@@ -13,8 +13,12 @@ class CategoriesRemoteDatasourceImpl implements CategoriesRemoteDatasource {
 
   @override
   Future<List<Category>> getCategories() async {
-    final categories = await firebaseFirestore.collection('categories').get()
-        as List<Category>;
+    final querySnapshot =
+        await firebaseFirestore.collection('categories').get();
+
+    final categories = querySnapshot.docs
+        .map((doc) => Category(name: doc.id, image: ''))
+        .toList();
 
     return categories;
   }
