@@ -1,7 +1,9 @@
+import 'package:Queszz/main/factories/makeHomeViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
   @override
@@ -23,7 +25,10 @@ class App extends StatelessWidget {
       ],
       initialRoute: '/home',
       routes: {
-        '/home': (_) => HomeScreen(),
+        '/home': (_) => ChangeNotifierProvider(
+              create: (_) => makeHomeViewModel(),
+              child: HomeScreen(),
+            ),
       },
     );
   }
