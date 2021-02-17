@@ -38,7 +38,9 @@ class DatabaseHelper {
             level_id INTEGER PRIMARY KEY,
             level_category_id INTEGER,
             stars INTEGER,
-            already_tried INTEGER
+            already_tried INTEGER,
+
+            FOREIGN KEY(level_category_id) REFERENCES Categories(category_id)
           )
           """);
 
@@ -47,7 +49,9 @@ class DatabaseHelper {
             question_id INTEGER PRIMARY KEY,
             question_level_id INTEGER,
             question TEXT,
-            answer TEXT
+            answer TEXT,
+
+            FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
           )
           """);
   }
