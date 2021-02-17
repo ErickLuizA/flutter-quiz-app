@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:Queszz/presentation/viewmodels/home_viewmodel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -100,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w300,
                 ),
               ),
+              SizedBox(height: 20),
               if (viewModel.uiState == UIState.Loading)
                 CircularProgressIndicator(),
               if (viewModel.uiState == UIState.Loading) Text("Error"),
@@ -110,7 +112,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       final category = viewModel.categoryList[index];
 
-                      return Text(category.name);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            '/levels',
+                            arguments: {"category": category},
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/${category.image}.svg",
+                              width: MediaQuery.of(context).size.width / 2.5,
+                            ),
+                            Text(
+                              category.name,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
                     },
                   ),
                 ),

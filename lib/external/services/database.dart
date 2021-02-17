@@ -38,7 +38,7 @@ class DatabaseHelper {
             level_id INTEGER PRIMARY KEY,
             level_category_id INTEGER,
             stars INTEGER,
-            already_tried BOOLEAN,
+            already_tried INTEGER
           )
           """);
 
@@ -47,7 +47,7 @@ class DatabaseHelper {
             question_id INTEGER PRIMARY KEY,
             question_level_id INTEGER,
             question TEXT,
-            answer TEXT,
+            answer TEXT
           )
           """);
   }
@@ -64,7 +64,7 @@ class DatabaseHelper {
         "level_id": i,
         "level_category_id": 1,
         "stars ": 0,
-        "already_tried ": false,
+        "already_tried ": 0,
       });
     });
 

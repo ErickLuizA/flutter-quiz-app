@@ -19,17 +19,17 @@ class Category extends Equatable {
     if (map == null) return null;
 
     return Category(
-      id: map['id'],
-      name: map['name'],
-      image: map['image'],
+      id: map['category_id'],
+      name: map['category_name'],
+      image: map['category_image'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'name': name,
-      'image': image,
+      'category_id': id,
+      'category_name': name,
+      'category_image': image,
     };
   }
 }
