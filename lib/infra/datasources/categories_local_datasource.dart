@@ -1,5 +1,5 @@
 import 'package:Queszz/domain/entities/category.dart';
 
-abstract class CategoriesRemoteDatasource {
+abstract class CategoriesLocalDatasource {
   Future<List<Category>> getCategories();
 }

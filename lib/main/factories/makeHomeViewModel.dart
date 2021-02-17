@@ -1,21 +1,22 @@
 import 'package:Queszz/data/repositories/categories_repository.dart';
 import 'package:Queszz/data/usecases/load_categories_impl.dart';
 import 'package:Queszz/domain/usecases/load_categories.dart';
-import 'package:Queszz/external/datasources/categories_remote_datasource_impl.dart';
+import 'package:Queszz/external/datasources/categories_local_datasource_impl.dart';
+import 'package:Queszz/external/services/database.dart';
 import 'package:Queszz/external/services/network_info_impl.dart';
-import 'package:Queszz/infra/datasources/categories_remote_datasource.dart';
+import 'package:Queszz/infra/datasources/categories_local_datasource.dart';
 import 'package:Queszz/infra/repositories/categories_repository_impl.dart';
 import 'package:Queszz/infra/services/network_info.dart';
 import 'package:Queszz/presentation/viewmodels/home_viewmodel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:sqflite/sqlite_api.dart';
 
 HomeViewModel makeHomeViewModel() {
-  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  Database database = DatabaseHelper().database;
 
-  CategoriesRemoteDatasource categoriesRemoteDatasource =
-      CategoriesRemoteDatasourceImpl(
-    firebaseFirestore: firebaseFirestore,
+  CategoriesLocalDatasource categoriesLocalDatasource =
+      CategoriesLocalDatasourceImpl(
+    database: database,
   );
 
   DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
@@ -23,7 +24,7 @@ HomeViewModel makeHomeViewModel() {
   NetworkInfo networkInfo = NetworkInfoImpl(dataConnectionChecker);
 
   CategoriesRepository categoriesRepository = CategoriesRepositoryImpl(
-    categoriesRemoteDatasource: categoriesRemoteDatasource,
+    categoriesLocalDatasource: categoriesLocalDatasource,
     networkInfo: networkInfo,
   );
 

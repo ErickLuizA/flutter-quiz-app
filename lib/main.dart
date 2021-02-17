@@ -1,11 +1,11 @@
 import 'package:Queszz/app_widget.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:Queszz/external/services/database.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  await DatabaseHelper().initDb();
 
   runApp(App());
 }
