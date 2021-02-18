@@ -49,7 +49,8 @@ class DatabaseHelper {
             question_id INTEGER PRIMARY KEY,
             question_level_id INTEGER,
             question TEXT,
-            answer TEXT,
+            answers TEXT,
+            correct TEXT,
 
             FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
           )
@@ -67,15 +68,16 @@ class DatabaseHelper {
       await db.insert('Levels', {
         "level_id": i,
         "level_category_id": 1,
-        "stars ": 0,
+        "stars": 0,
         "already_tried ": 0,
       });
     });
 
     await db.insert('Questions', {
       "question_level_id": 1,
-      "question ": "What is the biggest city in the world?",
-      "answer ": "Rio de Janeiro, Berlin, Tokyo, Beijing",
+      "question": "What is the biggest city in the world?",
+      "answers": "Rio de Janeiro, Berlin, Tokyo, Beijing",
+      "correct": "Tokyo",
     });
   }
 }
