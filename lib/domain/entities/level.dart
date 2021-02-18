@@ -21,7 +21,7 @@ class Level extends Equatable {
     return Level(
       id: map['level_id'],
       stars: map['stars'],
-      alreadyTried: map['already_tried'],
+      alreadyTried: map['already_tried'] == 0 ? false : true,
     );
   }
 
@@ -29,7 +29,7 @@ class Level extends Equatable {
     return {
       'level_id': id,
       'stars': stars,
-      'already_tried': alreadyTried,
+      'already_tried': alreadyTried ? 1 : 0,
     };
   }
 }

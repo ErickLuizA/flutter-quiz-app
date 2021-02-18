@@ -1,5 +1,7 @@
 import 'package:Queszz/main/factories/makeHomeViewModel.dart';
+import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
+import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,6 +26,24 @@ class App extends StatelessWidget {
         const Locale('pt', 'BR'),
       ],
       initialRoute: '/home',
+      onGenerateRoute: (settings) {
+        if (settings.name == '/levels') {
+          final args = settings.arguments as Map;
+
+          return MaterialPageRoute(
+            builder: (context) {
+              return ChangeNotifierProvider(
+                create: (context) => makeLevelsViewModel(),
+                child: LevelsScreen(
+                  category: args['category'],
+                ),
+              );
+            },
+          );
+        }
+
+        return null;
+      },
       routes: {
         '/home': (context) => ChangeNotifierProvider(
               create: (context) => makeHomeViewModel(),
