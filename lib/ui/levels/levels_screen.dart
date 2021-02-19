@@ -4,7 +4,6 @@ import 'package:Queszz/ui/shared/star_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Queszz/domain/entities/category.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class LevelsScreen extends StatefulWidget {

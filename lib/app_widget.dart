@@ -2,10 +2,13 @@ import 'package:Queszz/main/factories/makeHomeViewModel.dart';
 import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
+import 'package:Queszz/ui/questions/questions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import 'main/factories/makeQuestionsViewModel.dart';
 
 class App extends StatelessWidget {
   @override
@@ -35,6 +38,22 @@ class App extends StatelessWidget {
               return ChangeNotifierProvider(
                 create: (context) => makeLevelsViewModel(),
                 child: LevelsScreen(
+                  category: args['category'],
+                ),
+              );
+            },
+          );
+        }
+
+        if (settings.name == '/questions') {
+          final args = settings.arguments as Map;
+
+          return MaterialPageRoute(
+            builder: (context) {
+              return ChangeNotifierProvider(
+                create: (context) => makeQuestionsViewModel(),
+                child: QuestionsScreen(
+                  level: args['level'],
                   category: args['category'],
                 ),
               );
