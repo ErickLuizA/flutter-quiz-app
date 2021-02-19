@@ -1,7 +1,7 @@
+import 'package:Queszz/domain/constants/levels.dart';
+import 'package:Queszz/domain/constants/questions.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
-const LEVELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 class DatabaseHelper {
   static Database _database;
@@ -18,7 +18,7 @@ class DatabaseHelper {
 
         await insertSeeds(db);
       },
-      version: 1,
+      version: 2,
     );
 
     _database = await database;
@@ -73,11 +73,13 @@ class DatabaseHelper {
       });
     });
 
-    await db.insert('Questions', {
-      "question_level_id": 1,
-      "question": "What is the biggest city in the world?",
-      "answers": "Rio de Janeiro, Berlin, Tokyo, Beijing",
-      "correct": "Tokyo",
+    QUESTIONS.forEach((i) async {
+      await db.insert('Questions', {
+        "question_level_id": i['question_level_id'],
+        "question": i['question'],
+        "answers": i['answers'],
+        "correct": i['correct'],
+      });
     });
   }
 }
