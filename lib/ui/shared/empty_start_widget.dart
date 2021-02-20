@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class StarWidget extends StatelessWidget {
+class EmptyStarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Icon(
-      Icons.star_rate,
-      color: Colors.amber,
+      Icons.star_border,
       size: 26,
     );
   }

@@ -1,5 +1,6 @@
 import 'package:Queszz/domain/usecases/load_questions.dart';
 import 'package:Queszz/presentation/viewmodels/questions_viewmodel.dart';
+import 'package:Queszz/ui/questions/components/question_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Queszz/domain/entities/category.dart';
@@ -58,89 +59,69 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             var question = viewModel.questionList[index];
 
             return Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
               child: Column(
                 children: [
                   Text(
                     question.question,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 32,
+                      fontSize: 30,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  FlatButton(
-                    child: Text(question.answers[0],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        )),
-                    color: viewModel.isCorrect == 0
-                        ? Colors.green
-                        : Color(0XFF9794b3),
-                    onPressed: () {
+                  SizedBox(height: 30),
+                  QuestionButton(
+                    answer: question.answers[0],
+                    isCorrect: viewModel.isCorrect == 0,
+                    checkAnswer: () {
                       viewModel.checkAnswer(index, 0);
-
+                    },
+                    goToNextQuestion: () {
                       Future.delayed(Duration(milliseconds: 500), () {
                         viewModel.goToNextQuestion(question.id, context);
                       });
                     },
                   ),
-                  SizedBox(height: 10),
-                  FlatButton(
-                    child: Text(question.answers[1],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        )),
-                    color: viewModel.isCorrect == 1
-                        ? Colors.green
-                        : Color(0XFF9794b3),
-                    onPressed: () {
+                  SizedBox(height: 20),
+                  QuestionButton(
+                    answer: question.answers[1],
+                    isCorrect: viewModel.isCorrect == 1,
+                    checkAnswer: () {
                       viewModel.checkAnswer(index, 1);
-
+                    },
+                    goToNextQuestion: () {
                       Future.delayed(Duration(milliseconds: 500), () {
                         viewModel.goToNextQuestion(question.id, context);
                       });
                     },
                   ),
-                  SizedBox(height: 10),
-                  FlatButton(
-                    child: Text(question.answers[2],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        )),
-                    color: viewModel.isCorrect == 2
-                        ? Colors.green
-                        : Color(0XFF9794b3),
-                    onPressed: () {
+                  SizedBox(height: 20),
+                  QuestionButton(
+                    answer: question.answers[2],
+                    isCorrect: viewModel.isCorrect == 2,
+                    checkAnswer: () {
                       viewModel.checkAnswer(index, 2);
-
+                    },
+                    goToNextQuestion: () {
                       Future.delayed(Duration(milliseconds: 500), () {
                         viewModel.goToNextQuestion(question.id, context);
                       });
                     },
                   ),
-                  SizedBox(height: 10),
-                  FlatButton(
-                    child: Text(question.answers[3],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        )),
-                    color: viewModel.isCorrect == 3
-                        ? Colors.green
-                        : Color(0XFF9794b3),
-                    onPressed: () {
+                  SizedBox(height: 20),
+                  QuestionButton(
+                    answer: question.answers[3],
+                    isCorrect: viewModel.isCorrect == 3,
+                    checkAnswer: () {
                       viewModel.checkAnswer(index, 3);
-
+                    },
+                    goToNextQuestion: () {
                       Future.delayed(Duration(milliseconds: 500), () {
                         viewModel.goToNextQuestion(question.id, context);
                       });
                     },
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   FlatButton(
                     child: Text(
                       "Skip question",

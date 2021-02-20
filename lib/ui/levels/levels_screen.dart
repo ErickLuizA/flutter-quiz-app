@@ -1,5 +1,6 @@
 import 'package:Queszz/domain/usecases/load_levels.dart';
 import 'package:Queszz/presentation/viewmodels/levels_viewmodel.dart';
+import 'package:Queszz/ui/shared/empty_start_widget.dart';
 import 'package:Queszz/ui/shared/star_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -91,30 +92,34 @@ class _LevelsScreenState extends State<LevelsScreen> {
                                             ? [
                                                 StarWidget(),
                                                 StarWidget(),
-                                                Icon(Icons.star_border),
+                                                EmptyStarWidget(),
                                               ]
                                             : level.stars == 1
                                                 ? [
                                                     StarWidget(),
-                                                    Icon(Icons.star_border),
-                                                    Icon(Icons.star_border),
+                                                    EmptyStarWidget(),
+                                                    EmptyStarWidget(),
                                                   ]
                                                 : [
-                                                    Icon(Icons.star_border),
-                                                    Icon(Icons.star_border),
-                                                    Icon(Icons.star_border),
+                                                    EmptyStarWidget(),
+                                                    EmptyStarWidget(),
+                                                    EmptyStarWidget(),
                                                   ],
                                   ),
                                   Text(
                                     "?",
                                     style: TextStyle(
                                       color: Colors.blueGrey,
-                                      fontSize: 32,
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
                                     "Level ${level.id}",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ],
                               ),
