@@ -1,3 +1,5 @@
+import 'package:Queszz/domain/entities/category.dart';
+import 'package:Queszz/domain/entities/level.dart';
 import 'package:Queszz/domain/entities/question.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +20,9 @@ class QuestionsViewModel extends ChangeNotifier {
 
   int isCorrect;
 
+  Level level;
+  Category category;
+
   UIState uiState = UIState.Loading;
 
   Future<void> loadQuestions(LoadQuestionsParams params) async {
@@ -36,10 +41,10 @@ class QuestionsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void checkAnswer(String answer, int index) {
-    if (answer == questionList[index].correct) {
-      isCorrect = index;
-      correctAnswers++;
+  void checkAnswer(int index, int answerIndex) {
+    if (answerIndex == questionList[index].correct) {
+      isCorrect = answerIndex;
+      correctAnswers = correctAnswers + 1;
     }
 
     notifyListeners();
@@ -53,9 +58,11 @@ class QuestionsViewModel extends ChangeNotifier {
 
   void goToNextQuestion(int id, BuildContext context) {
     if (id == questionList[questionList.length - 1].id) {
-      Navigator.of(context).pushNamed(
+      Navigator.of(context).popAndPushNamed(
         '/score',
         arguments: {
+          "level": level,
+          "category": category,
           "correctAnswers": correctAnswers,
         },
       );

@@ -3,6 +3,7 @@ import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:Queszz/ui/questions/questions_screen.dart';
+import 'package:Queszz/ui/score/score_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -56,6 +57,20 @@ class App extends StatelessWidget {
                   level: args['level'],
                   category: args['category'],
                 ),
+              );
+            },
+          );
+        }
+
+        if (settings.name == '/score') {
+          final args = settings.arguments as Map;
+
+          return MaterialPageRoute(
+            builder: (context) {
+              return ScoreScreen(
+                level: args['level'],
+                category: args['category'],
+                correctAnswers: args['correctAnswers'],
               );
             },
           );

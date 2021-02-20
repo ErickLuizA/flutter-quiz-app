@@ -37,6 +37,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   Widget build(BuildContext context) {
     var viewModel = Provider.of<QuestionsViewModel>(context);
 
+    viewModel.category = widget.category;
+    viewModel.level = widget.level;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -76,9 +79,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                         ? Colors.green
                         : Color(0XFF9794b3),
                     onPressed: () {
-                      viewModel.checkAnswer(question.answers[0], index);
+                      viewModel.checkAnswer(index, 0);
 
-                      viewModel.goToNextQuestion(question.id, context);
+                      Future.delayed(Duration(milliseconds: 500), () {
+                        viewModel.goToNextQuestion(question.id, context);
+                      });
                     },
                   ),
                   SizedBox(height: 10),
@@ -92,9 +97,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                         ? Colors.green
                         : Color(0XFF9794b3),
                     onPressed: () {
-                      viewModel.checkAnswer(question.answers[1], index);
+                      viewModel.checkAnswer(index, 1);
 
-                      viewModel.goToNextQuestion(question.id, context);
+                      Future.delayed(Duration(milliseconds: 500), () {
+                        viewModel.goToNextQuestion(question.id, context);
+                      });
                     },
                   ),
                   SizedBox(height: 10),
@@ -108,11 +115,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                         ? Colors.green
                         : Color(0XFF9794b3),
                     onPressed: () {
-                      viewModel.checkAnswer(question.answers[2], index);
+                      viewModel.checkAnswer(index, 2);
 
-                      Future.delayed(Duration(seconds: 1));
-
-                      viewModel.goToNextQuestion(question.id, context);
+                      Future.delayed(Duration(milliseconds: 500), () {
+                        viewModel.goToNextQuestion(question.id, context);
+                      });
                     },
                   ),
                   SizedBox(height: 10),
@@ -126,9 +133,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                         ? Colors.green
                         : Color(0XFF9794b3),
                     onPressed: () {
-                      viewModel.checkAnswer(question.answers[3], index);
+                      viewModel.checkAnswer(index, 3);
 
-                      viewModel.goToNextQuestion(question.id, context);
+                      Future.delayed(Duration(milliseconds: 500), () {
+                        viewModel.goToNextQuestion(question.id, context);
+                      });
                     },
                   ),
                   SizedBox(height: 10),
