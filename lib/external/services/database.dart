@@ -18,7 +18,7 @@ class DatabaseHelper {
 
         await insertSeeds(db);
       },
-      version: 2,
+      version: 1,
     );
 
     _database = await database;
@@ -50,7 +50,7 @@ class DatabaseHelper {
             question_level_id INTEGER,
             question TEXT,
             answers TEXT,
-            correct TEXT,
+            correct INTEGER,
 
             FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
           )

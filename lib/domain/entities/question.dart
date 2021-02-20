@@ -5,7 +5,7 @@ class Question extends Equatable {
   final int id;
   final String question;
   final List answers;
-  final String correct;
+  final int correct;
 
   Question({
     @required this.id,
