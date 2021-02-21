@@ -1,8 +1,12 @@
+import 'package:Queszz/ui/shared/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:Queszz/presentation/viewmodels/home_viewmodel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+
+import 'components/category_list_widget.dart';
+import 'components/drawer_widget.dart';
+import 'components/load_error_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -34,48 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Queszz"),
         centerTitle: true,
       ),
-      drawer: Drawer(
-        child: Material(
-          color: Theme.of(context).primaryColor,
-          child: Column(
-            children: [
-              UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(
-                  child: Image.network(
-                    "https://picsum.photos/id/1014/200",
-                  ),
-                ),
-                accountName: Text("John Doe"),
-                accountEmail: Text("johndoe@gmail.com"),
-              ),
-              ListTile(
-                title: Text(
-                  "Leadboard",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Statistics",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Share",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerWidget(),
       body: Container(
         width: MediaQuery.of(context).size.width,
         color: Theme.of(context).primaryColor,
@@ -102,44 +65,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              if (viewModel.uiState == UIState.Loading)
-                CircularProgressIndicator(),
-              if (viewModel.uiState == UIState.Loading) Text("Error"),
+              if (viewModel.uiState == UIState.Loading) LoadingWidget(),
+              if (viewModel.uiState == UIState.Error)
+                LoadErrorWidget(
+                  retry: () {
+                    viewModel.loadCategories();
+                  },
+                ),
               if (viewModel.uiState == UIState.Success)
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    children: List.generate(
-                      viewModel.categoryList.length,
-                      (index) {
-                        final category = viewModel.categoryList[index];
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                              '/levels',
-                              arguments: {"category": category},
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/${category.image}.svg",
-                                width: MediaQuery.of(context).size.width / 2.5,
-                              ),
-                              Text(
-                                category.name,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                CategoryListWidget(
+                  categoryList: viewModel.categoryList,
                 ),
             ],
           ),

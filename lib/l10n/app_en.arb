@@ -1,0 +1,13 @@
+{
+  "letsPlay": "Let's Play",
+  "@letsPlay": {},
+
+  "chooseCategory": "Choose a category to start playing",
+  "@chooseCategory": {},
+
+  "tryAgain": "Try Again",
+  "@tryAgain": {},
+
+  "errorCategories": "A error occurred while trying to load categories",
+  "@errorCategories": {}
+}
