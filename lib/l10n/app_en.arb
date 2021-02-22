@@ -9,5 +9,11 @@
   "@tryAgain": {},
 
   "errorCategories": "A error occurred while trying to load categories",
-  "@errorCategories": {}
+  "@errorCategories": {},
+
+  "errorLevels": "A error occurred while trying to load levels",
+  "@errorLevels": {},
+
+  "level": "Level",
+  "@level": {}
 }
