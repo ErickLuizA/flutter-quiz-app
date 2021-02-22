@@ -1,8 +1,10 @@
 import 'package:Queszz/domain/entities/category.dart';
 import 'package:Queszz/domain/entities/level.dart';
-import 'package:Queszz/ui/shared/empty_start_widget.dart';
-import 'package:Queszz/ui/shared/star_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
+
+import 'components/score_box_widget.dart';
 
 class ScoreScreen extends StatefulWidget {
   final Level level;
@@ -35,7 +37,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Total correct answers",
+                  AppLocalizations.of(context).totalCorrectAnswers,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -43,82 +45,27 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "${widget.correctAnswers} out 10 Questions",
+                  "${widget.correctAnswers} ${AppLocalizations.of(context).out10}",
                   style: TextStyle(
                     color: isWinner ? Colors.lightGreen : Colors.redAccent,
                     fontSize: 20,
                   ),
                 ),
                 SizedBox(height: 20),
-                Material(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  color: isWinner ? Colors.lightGreen : Colors.redAccent,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Your final score is",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: widget.correctAnswers == 10
-                              ? [
-                                  StarWidget(),
-                                  StarWidget(),
-                                  StarWidget(),
-                                ]
-                              : widget.correctAnswers >= 8
-                                  ? [
-                                      StarWidget(),
-                                      StarWidget(),
-                                      EmptyStarWidget(),
-                                    ]
-                                  : widget.correctAnswers >= 6
-                                      ? [
-                                          StarWidget(),
-                                          EmptyStarWidget(),
-                                          EmptyStarWidget(),
-                                        ]
-                                      : [
-                                          EmptyStarWidget(),
-                                          EmptyStarWidget(),
-                                          EmptyStarWidget(),
-                                        ],
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "${widget.correctAnswers * 10}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                ScoreBoxWidget(
+                  isWinner: isWinner,
+                  correctAnswers: widget.correctAnswers,
                 ),
                 SizedBox(height: 20),
                 FlatButton(
                   minWidth: MediaQuery.of(context).size.width - 30,
                   padding: EdgeInsets.all(20),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   color: Color(0XFF9794b3),
                   child: Text(
-                    "Try again",
+                    AppLocalizations.of(context).tryAgain,
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
@@ -134,13 +81,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   minWidth: MediaQuery.of(context).size.width - 30,
                   padding: EdgeInsets.all(20),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   color: Color(0XFF9794b3),
                   child: Text(
-                    "Continue",
+                    AppLocalizations.of(context).keepGoing,
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
