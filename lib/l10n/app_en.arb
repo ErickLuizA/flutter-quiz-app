@@ -15,5 +15,8 @@
   "@errorLevels": {},
 
   "level": "Level",
-  "@level": {}
+  "@level": {},
+
+  "skipQuestion": "Skip Question",
+  "@skipQuestion": {}
 }

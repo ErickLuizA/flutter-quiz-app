@@ -4,5 +4,6 @@
   "tryAgain": "Tentar novamente",
   "errorCategories": "Um erro occorreu ao tentar carregar as categorias",
   "errorLevels": "Um erro occorreu ao tentar carregar os níveis",
-  "level": "Nível"
+  "level": "Nível",
+  "skipQuestion": "Pular questão"
 }
