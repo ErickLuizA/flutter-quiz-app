@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadErrorWidget extends StatelessWidget {
+  final String text;
   final Function retry;
 
   const LoadErrorWidget({
     Key key,
+    @required this.text,
     @required this.retry,
   }) : super(key: key);
 
@@ -25,7 +27,7 @@ class LoadErrorWidget extends StatelessWidget {
             vertical: 30,
           ),
           child: Text(
-            AppLocalizations.of(context).errorCategories,
+            text,
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ),

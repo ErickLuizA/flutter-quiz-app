@@ -1,3 +1,4 @@
+import 'package:Queszz/ui/shared/load_error_widget.dart';
 import 'package:Queszz/ui/shared/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:Queszz/presentation/viewmodels/home_viewmodel.dart';
@@ -6,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import 'components/category_list_widget.dart';
 import 'components/drawer_widget.dart';
-import 'components/load_error_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -68,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (viewModel.uiState == UIState.Loading) LoadingWidget(),
               if (viewModel.uiState == UIState.Error)
                 LoadErrorWidget(
+                  text: AppLocalizations.of(context).errorCategories,
                   retry: () {
                     viewModel.loadCategories();
                   },
