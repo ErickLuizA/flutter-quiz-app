@@ -1,4 +1,5 @@
 import 'package:Queszz/domain/usecases/load_levels.dart';
+import 'package:Queszz/domain/usecases/update_level.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:Queszz/data/repositories/levels_repository.dart';
@@ -18,6 +19,17 @@ class LevelsRepositoryImpl implements LevelsRepository {
       LoadLevelsParams params) async {
     try {
       final result = await levelsLocalDatasource.getLevels(params);
+
+      return Right(result);
+    } catch (e) {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateLevel(UpdateLevelParams params) async {
+    try {
+      final result = await levelsLocalDatasource.updateLevel(params);
 
       return Right(result);
     } catch (e) {
