@@ -1,5 +1,6 @@
 import 'package:Queszz/main/factories/makeHomeViewModel.dart';
 import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
+import 'package:Queszz/main/factories/makeScoreViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:Queszz/ui/questions/questions_screen.dart';
@@ -67,10 +68,13 @@ class App extends StatelessWidget {
 
           return MaterialPageRoute(
             builder: (context) {
-              return ScoreScreen(
-                level: args['level'],
-                category: args['category'],
-                correctAnswers: args['correctAnswers'],
+              return ChangeNotifierProvider(
+                create: (context) => makeScoreViewModel(),
+                child: ScoreScreen(
+                  level: args['level'],
+                  category: args['category'],
+                  correctAnswers: args['correctAnswers'],
+                ),
               );
             },
           );

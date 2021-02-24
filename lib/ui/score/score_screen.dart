@@ -1,8 +1,11 @@
 import 'package:Queszz/domain/entities/category.dart';
 import 'package:Queszz/domain/entities/level.dart';
+import 'package:Queszz/domain/usecases/update_level.dart';
+import 'package:Queszz/presentation/viewmodels/score_viewmodel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'components/score_box_widget.dart';
 
@@ -23,6 +26,26 @@ class ScoreScreen extends StatefulWidget {
 }
 
 class _ScoreScreenState extends State<ScoreScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    Provider.of<ScoreViewModel>(context).updateLevel(
+      UpdateLevelParams(
+        levelId: widget.level.id,
+        categoryId: widget.category.id,
+        alreadyTried: 1,
+        stars: widget.correctAnswers == 10
+            ? 3
+            : widget.correctAnswers >= 8
+                ? 2
+                : widget.correctAnswers >= 6
+                    ? 1
+                    : 0,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isWinner = widget.correctAnswers >= 6;
