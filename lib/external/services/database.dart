@@ -63,7 +63,8 @@ class DatabaseHelper {
             wrong_answers INTEGER,
             skiped_answers INTEGER,
             games_played INTEGER,
-            games_won INTEGER
+            games_won INTEGER,
+            games_lost INTEGER
           )
           """);
   }
@@ -99,7 +100,8 @@ class DatabaseHelper {
       "wrong_answers": "0",
       "skiped_answers": "0",
       "games_played": "0",
-      "games_won": "0"
+      "games_won": "0",
+      "games_lost": "0"
     });
   }
 }

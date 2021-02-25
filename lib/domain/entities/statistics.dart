@@ -8,6 +8,7 @@ class Statistics extends Equatable {
   final int skipedAnswers;
   final int gamesPlayed;
   final int gamesWon;
+  final int gamesLost;
 
   Statistics({
     @required this.totalAnswers,
@@ -16,6 +17,7 @@ class Statistics extends Equatable {
     @required this.skipedAnswers,
     @required this.gamesPlayed,
     @required this.gamesWon,
+    @required this.gamesLost,
   });
 
   @override
@@ -26,6 +28,7 @@ class Statistics extends Equatable {
         skipedAnswers,
         gamesPlayed,
         gamesWon,
+        gamesLost
       ];
 
   factory Statistics.fromMap(Map<String, dynamic> map) {
@@ -38,6 +41,7 @@ class Statistics extends Equatable {
       skipedAnswers: map['skiped_answers'],
       gamesPlayed: map['games_played'],
       gamesWon: map['games_won'],
+      gamesLost: map['games_lost'],
     );
   }
 
@@ -49,6 +53,7 @@ class Statistics extends Equatable {
       'skiped_answers': skipedAnswers,
       'games_played': gamesPlayed,
       'games_won': gamesWon,
+      'games_lost': gamesLost,
     };
   }
 }
