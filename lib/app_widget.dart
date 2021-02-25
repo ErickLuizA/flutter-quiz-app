@@ -74,6 +74,8 @@ class App extends StatelessWidget {
                   level: args['level'],
                   category: args['category'],
                   correctAnswers: args['correctAnswers'],
+                  wrongAnswers: args['wrongAnswers'],
+                  skipedAnswers: args['skipedAnswers'],
                 ),
               );
             },

@@ -93,7 +93,7 @@ class QuestionItemWidget extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              viewModel.goToNextQuestion(question.id, context);
+              viewModel.goToNextQuestion(question.id, context, isSkip: true);
             },
           ),
         ],

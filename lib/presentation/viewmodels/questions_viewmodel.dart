@@ -15,8 +15,12 @@ class QuestionsViewModel extends ChangeNotifier {
   PageController pageController = PageController();
 
   List<Question> questionList = List<Question>();
+
   int currentQuestion = 1;
+
   int correctAnswers = 0;
+  int wrongAnswers = 0;
+  int skipedAnswers = 0;
 
   int isCorrect;
 
@@ -45,6 +49,8 @@ class QuestionsViewModel extends ChangeNotifier {
     if (answerIndex == questionList[index].correct) {
       isCorrect = answerIndex;
       correctAnswers = correctAnswers + 1;
+    } else {
+      wrongAnswers = wrongAnswers + 1;
     }
 
     notifyListeners();
@@ -56,7 +62,11 @@ class QuestionsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void goToNextQuestion(int id, BuildContext context) {
+  void goToNextQuestion(int id, BuildContext context, {bool isSkip}) {
+    if (isSkip) {
+      skipedAnswers = skipedAnswers + 1;
+    }
+
     if (id == questionList[questionList.length - 1].id) {
       Navigator.of(context).popAndPushNamed(
         '/score',
@@ -64,6 +74,8 @@ class QuestionsViewModel extends ChangeNotifier {
           "level": level,
           "category": category,
           "correctAnswers": correctAnswers,
+          "wrongAnswers": wrongAnswers,
+          "skipedAnswers": skipedAnswers,
         },
       );
     } else {

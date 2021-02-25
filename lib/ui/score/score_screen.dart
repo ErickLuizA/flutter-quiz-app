@@ -13,13 +13,17 @@ class ScoreScreen extends StatefulWidget {
   final Level level;
   final Category category;
   final int correctAnswers;
+  final int wrongAnswers;
+  final int skipedAnswers;
 
-  const ScoreScreen({
-    Key key,
-    @required this.correctAnswers,
-    @required this.level,
-    @required this.category,
-  }) : super(key: key);
+  const ScoreScreen(
+      {Key key,
+      @required this.correctAnswers,
+      @required this.level,
+      @required this.category,
+      @required this.wrongAnswers,
+      @required this.skipedAnswers})
+      : super(key: key);
 
   @override
   _ScoreScreenState createState() => _ScoreScreenState();

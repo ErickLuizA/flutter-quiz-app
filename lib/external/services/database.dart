@@ -55,6 +55,17 @@ class DatabaseHelper {
             FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
           )
           """);
+
+    await db.execute("""
+          CREATE TABLE Statistics(
+            total_answers INTEGER,
+            correct_answers INTEGER,
+            wrong_answers INTEGER,
+            skiped_answers INTEGER,
+            games_played INTEGER,
+            games_won INTEGER
+          )
+          """);
   }
 
   Future<void> insertSeeds(Database db) async {
@@ -80,6 +91,15 @@ class DatabaseHelper {
         "answers": i['answers'],
         "correct": i['correct'],
       });
+    });
+
+    await db.insert('Statistics', {
+      "total_answers": "0",
+      "correct_answers": "0",
+      "wrong_answers": "0",
+      "skiped_answers": "0",
+      "games_played": "0",
+      "games_won": "0"
     });
   }
 }
