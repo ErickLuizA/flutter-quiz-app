@@ -9,18 +9,22 @@ import 'package:Queszz/domain/entities/level.dart';
 class LevelItemWidget extends StatelessWidget {
   final Level level;
   final Category category;
+  final List<Level> alreadyTried;
 
   const LevelItemWidget({
     Key key,
     @required this.level,
     @required this.category,
+    @required this.alreadyTried,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var lastLevel = alreadyTried.lastWhere((item) => item != null);
+
     return GestureDetector(
       onTap: () {
-        if (level.alreadyTried || level.id == 1) {
+        if (alreadyTried.contains(level) || level.id == lastLevel.id + 1) {
           Navigator.of(context).pushNamed(
             '/questions',
             arguments: {
@@ -77,7 +81,7 @@ class LevelItemWidget extends StatelessWidget {
               ),
             ],
           ),
-          if (!level.alreadyTried && level.id != 1)
+          if (!alreadyTried.contains(level) && level.id != lastLevel.id + 1)
             Align(
               alignment: Alignment.topCenter,
               child: Icon(

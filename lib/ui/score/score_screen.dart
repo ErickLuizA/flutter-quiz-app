@@ -36,7 +36,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
   void initState() {
     super.initState();
 
-    Provider.of<ScoreViewModel>(context).updateLevel(
+    Provider.of<ScoreViewModel>(context, listen: false).updateLevel(
       UpdateLevelParams(
         levelId: widget.level.id,
         categoryId: widget.category.id,
@@ -51,7 +51,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
       ),
     );
 
-    Provider.of<ScoreViewModel>(context).updateStatistics(
+    Provider.of<ScoreViewModel>(context, listen: false).updateStatistics(
       UpdateStatisticsParams(
         Statistics(
           totalAnswers: 10,

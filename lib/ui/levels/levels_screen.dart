@@ -72,9 +72,16 @@ class _LevelsScreenState extends State<LevelsScreen> {
                       (index) {
                         var level = viewModel.levelList[index];
 
+                        final alreadyTried = viewModel.levelList.map((item) {
+                          if (item.alreadyTried || item.id == 1) {
+                            return item;
+                          }
+                        }).toList();
+
                         return LevelItemWidget(
                           category: widget.category,
                           level: level,
+                          alreadyTried: alreadyTried,
                         );
                       },
                     ),

@@ -62,7 +62,7 @@ class QuestionsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void goToNextQuestion(int id, BuildContext context, {bool isSkip}) {
+  void goToNextQuestion(int id, BuildContext context, {bool isSkip = false}) {
     if (isSkip) {
       skipedAnswers = skipedAnswers + 1;
     }
