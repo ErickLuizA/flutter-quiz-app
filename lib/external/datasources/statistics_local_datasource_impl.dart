@@ -1,3 +1,4 @@
+import 'package:Queszz/domain/entities/statistics.dart';
 import 'package:Queszz/domain/helpers/exceptions.dart';
 import 'package:Queszz/domain/usecases/update_statistics.dart';
 import 'package:Queszz/infra/datasources/statistics_local_datasource.dart';
@@ -37,6 +38,17 @@ class StatisticsLocalDatasourceImpl implements StatisticsLocalDatasource {
       );
 
       return result;
+    } catch (e) {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<Statistics> getStatistics() async {
+    try {
+      final result = await database.query('Statistics');
+
+      return Statistics.fromMap(result.first);
     } catch (e) {
       throw CacheException();
     }
