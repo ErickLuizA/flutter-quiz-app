@@ -1,10 +1,12 @@
 import 'package:Queszz/main/factories/makeHomeViewModel.dart';
 import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
 import 'package:Queszz/main/factories/makeScoreViewModel.dart';
+import 'package:Queszz/main/factories/makeStatisticsViewModel.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:Queszz/ui/questions/questions_screen.dart';
 import 'package:Queszz/ui/score/score_screen.dart';
+import 'package:Queszz/ui/statistics/statistics_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -88,6 +90,10 @@ class App extends StatelessWidget {
         '/home': (context) => ChangeNotifierProvider(
               create: (context) => makeHomeViewModel(),
               child: HomeScreen(),
+            ),
+        '/statistics': (context) => ChangeNotifierProvider(
+              create: (context) => makeStatisticsViewModel(),
+              child: StatisticsScreen(),
             ),
       },
     );

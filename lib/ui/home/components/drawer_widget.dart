@@ -26,6 +26,9 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {
+                Navigator.of(context).pushNamed('/statistics');
+              },
               title: Text(
                 "Statistics",
                 style: TextStyle(

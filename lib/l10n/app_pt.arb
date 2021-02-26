@@ -9,5 +9,6 @@
   "skipQuestion": "Pular questão",
   "finalScore": "Seu resultado final é",
   "totalCorrectAnswers": "Total de respostas corretas",
-  "out10": "de 10 questões"
+  "out10": "de 10 questões",
+  "errorStatistics": "Um erro occorreu ao tentar carregar as estatísticas"
 }

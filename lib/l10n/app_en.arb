@@ -30,5 +30,9 @@
   "@totalCorrectAnswers": {},
 
   "out10": "out 10 Questions",
-  "@out10": {}
+  "@out10": {},
+
+
+  "errorStatistics": "A error occurred while trying to load the statistics",
+  "@errorStatistics": {}
 }
