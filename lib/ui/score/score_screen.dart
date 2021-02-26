@@ -1,6 +1,8 @@
 import 'package:Queszz/domain/entities/category.dart';
 import 'package:Queszz/domain/entities/level.dart';
+import 'package:Queszz/domain/entities/statistics.dart';
 import 'package:Queszz/domain/usecases/update_level.dart';
+import 'package:Queszz/domain/usecases/update_statistics.dart';
 import 'package:Queszz/presentation/viewmodels/score_viewmodel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -46,6 +48,20 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 : widget.correctAnswers >= 6
                     ? 1
                     : 0,
+      ),
+    );
+
+    Provider.of<ScoreViewModel>(context).updateStatistics(
+      UpdateStatisticsParams(
+        Statistics(
+          totalAnswers: 10,
+          correctAnswers: widget.correctAnswers,
+          wrongAnswers: widget.wrongAnswers,
+          skipedAnswers: widget.skipedAnswers,
+          gamesPlayed: 1,
+          gamesWon: widget.correctAnswers >= 6 ? 1 : 0,
+          gamesLost: widget.correctAnswers >= 6 ? 0 : 1,
+        ),
       ),
     );
   }
