@@ -36,12 +36,13 @@ class LevelsLocalDatasourceImpl implements LevelsLocalDatasource {
       final result = await database.rawUpdate(
         """
         UPDATE Levels
-        SET stars = ?,
+        SET stars = CASE WHEN stars > ? THEN stars ELSE ? END,
             already_tried = ?
         WHERE
             level_id = ? AND level_category_id = ?;
       """,
         [
+          params.stars,
           params.stars,
           params.alreadyTried,
           params.levelId,

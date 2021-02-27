@@ -24,7 +24,8 @@ class LevelItemWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (alreadyTried.contains(level) || level.id == lastLevel.id + 1) {
+        if (alreadyTried.contains(level) ||
+            level.id == lastLevel.id + 1 && lastLevel.alreadyTried) {
           Navigator.of(context).pushNamed(
             '/questions',
             arguments: {
@@ -36,52 +37,54 @@ class LevelItemWidget extends StatelessWidget {
       },
       child: Stack(
         children: [
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: level.stars == 3
-                    ? [
-                        StarWidget(),
-                        StarWidget(),
-                        StarWidget(),
-                      ]
-                    : level.stars == 2
-                        ? [
-                            StarWidget(),
-                            StarWidget(),
-                            EmptyStarWidget(),
-                          ]
-                        : level.stars == 1
-                            ? [
-                                StarWidget(),
-                                EmptyStarWidget(),
-                                EmptyStarWidget(),
-                              ]
-                            : [
-                                EmptyStarWidget(),
-                                EmptyStarWidget(),
-                                EmptyStarWidget(),
-                              ],
-              ),
-              Text(
-                "?",
-                style: TextStyle(
-                  color: Colors.blueGrey,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+          if (alreadyTried.contains(level) ||
+              level.id == lastLevel.id + 1 && lastLevel.alreadyTried)
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: level.stars == 3
+                      ? [
+                          StarWidget(),
+                          StarWidget(),
+                          StarWidget(),
+                        ]
+                      : level.stars == 2
+                          ? [
+                              StarWidget(),
+                              StarWidget(),
+                              EmptyStarWidget(),
+                            ]
+                          : level.stars == 1
+                              ? [
+                                  StarWidget(),
+                                  EmptyStarWidget(),
+                                  EmptyStarWidget(),
+                                ]
+                              : [
+                                  EmptyStarWidget(),
+                                  EmptyStarWidget(),
+                                  EmptyStarWidget(),
+                                ],
                 ),
-              ),
-              Text(
-                "${AppLocalizations.of(context).level} ${level.id}",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
+                Text(
+                  "?",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          if (!alreadyTried.contains(level) && level.id != lastLevel.id + 1)
+                Text(
+                  "${AppLocalizations.of(context).level} ${level.id}",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            )
+          else
             Align(
               alignment: Alignment.topCenter,
               child: Icon(
