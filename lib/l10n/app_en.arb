@@ -32,7 +32,27 @@
   "out10": "out 10 Questions",
   "@out10": {},
 
-
   "errorStatistics": "A error occurred while trying to load the statistics",
-  "@errorStatistics": {}
+  "@errorStatistics": {},
+
+  "gamesPlayed": "Games Played",
+  "@gamesPlayed": {},
+
+  "gamesWon": "Games Won",
+  "@gamesWon": {},
+
+  "gamesLost": "Games Lost",
+  "@gamesLost": {},
+
+  "totalAnswers": "Total Answers",
+  "@totalAnswers": {},
+
+  "correctAnswers": "Correct Answers",
+  "@correctAnswers": {},
+
+  "wrongAnswers": "Wrong Answers",
+  "@wrongAnswers": {},
+
+  "skipedAnswers": "Skiped Answers",
+  "@skipedAnswers": {}
 }

@@ -10,5 +10,12 @@
   "finalScore": "Seu resultado final é",
   "totalCorrectAnswers": "Total de respostas corretas",
   "out10": "de 10 questões",
-  "errorStatistics": "Um erro occorreu ao tentar carregar as estatísticas"
+  "errorStatistics": "Um erro occorreu ao tentar carregar as estatísticas",
+  "gamesPlayed": "Partidas Jogadas",
+  "gamesWon": "Partidas Ganhadas",
+  "gamesLost": "Partidas Perdidas",
+  "totalAnswers": "Total de respostas",
+  "correctAnswers": "Repostas corretas",
+  "wrongAnswers": "Repostas erradas",
+  "skipedAnswers": "Repostas puladas"
 }

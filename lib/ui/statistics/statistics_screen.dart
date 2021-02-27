@@ -1,6 +1,7 @@
 import 'package:Queszz/presentation/viewmodels/statistics_viewmodel.dart';
 import 'package:Queszz/ui/shared/load_error_widget.dart';
 import 'package:Queszz/ui/shared/loading_widget.dart';
+import 'package:Queszz/ui/statistics/components/statistic_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -35,15 +36,57 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       viewModel.loadStatistics();
                     },
                   )
-                : Column(
-                    children: [
-                      Row(
+                : Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 40, horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Games played"),
-                          Text("${viewModel.statistics.gamesPlayed}"),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).gamesPlayed,
+                            result: "${viewModel.statistics.gamesPlayed}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).gamesWon,
+                            result: "${viewModel.statistics.gamesWon}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).gamesLost,
+                            result: "${viewModel.statistics.gamesLost}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).totalAnswers,
+                            result: "${viewModel.statistics.totalAnswers}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).correctAnswers,
+                            result: "${viewModel.statistics.correctAnswers}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).wrongAnswers,
+                            result: "${viewModel.statistics.wrongAnswers}",
+                          ),
+                          SizedBox(height: 10),
+                          Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).skipedAnswers,
+                            result: "${viewModel.statistics.skipedAnswers}",
+                          ),
+                          Divider(color: Colors.grey),
                         ],
-                      )
-                    ],
+                      ),
+                    ),
                   ),
       ),
     );
