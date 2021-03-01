@@ -24,11 +24,10 @@ class QuestionButton extends StatelessWidget {
           Radius.circular(10),
         ),
       ),
-      child: Text(answer,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-          )),
+      child: Text(
+        answer,
+        style: Theme.of(context).textTheme.bodyText2,
+      ),
       color: isCorrect ? Colors.green : Color(0XFF9794b3),
       onPressed: () {
         checkAnswer();

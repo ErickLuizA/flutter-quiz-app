@@ -26,10 +26,7 @@ class QuestionItemWidget extends StatelessWidget {
         children: [
           Text(
             question.question,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-            ),
+            style: Theme.of(context).textTheme.subtitle2,
           ),
           SizedBox(height: 30),
           QuestionButton(
@@ -87,10 +84,7 @@ class QuestionItemWidget extends StatelessWidget {
           FlatButton(
             child: Text(
               AppLocalizations.of(context).skipQuestion,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             onPressed: () {
               viewModel.goToNextQuestion(question.id, context, isSkip: true);

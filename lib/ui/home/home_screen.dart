@@ -49,20 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 AppLocalizations.of(context).letsPlay,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: Theme.of(context).textTheme.headline1,
               ),
               SizedBox(height: 10),
               Text(
                 AppLocalizations.of(context).chooseCategory,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w300,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               SizedBox(height: 20),
               if (viewModel.uiState == UIState.Loading) LoadingWidget(),

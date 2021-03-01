@@ -17,5 +17,6 @@
   "totalAnswers": "Total de respostas",
   "correctAnswers": "Repostas corretas",
   "wrongAnswers": "Repostas erradas",
-  "skipedAnswers": "Repostas puladas"
+  "skipedAnswers": "Repostas puladas",
+    "theme": "Tema"
 }

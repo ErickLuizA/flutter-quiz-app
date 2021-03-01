@@ -17,17 +17,11 @@ class StatisticItemWidget extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22,
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         Text(
           result,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22,
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
       ],
     );

@@ -3,6 +3,7 @@ import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
 import 'package:Queszz/main/factories/makeScoreViewModel.dart';
 import 'package:Queszz/main/factories/makeStatisticsViewModel.dart';
 import 'package:Queszz/presentation/controllers/theme_controller.dart';
+import 'package:Queszz/themes.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:Queszz/ui/questions/questions_screen.dart';
@@ -25,34 +26,8 @@ class App extends StatelessWidget {
         builder: (context, themeController, _) => MaterialApp(
           title: 'Queszz',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primaryColor: Color(0xFFDDDDDD),
-            accentColor: Color(0XFF9794b3),
-            textTheme: TextTheme(
-              bodyText1: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            iconTheme: IconThemeData(
-              color: Colors.white,
-            ),
-          ),
-          darkTheme: ThemeData(
-            primaryColor: Color(0XFF3F3D56),
-            accentColor: Color(0XFF9794b3),
-            textTheme: TextTheme(
-              bodyText1: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            iconTheme: IconThemeData(
-              color: Colors.white,
-            ),
-          ),
+          theme: lightTheme,
+          darkTheme: darkTheme,
           themeMode: themeController.isDark ? ThemeMode.dark : ThemeMode.light,
           localizationsDelegates: [
             AppLocalizations.delegate,

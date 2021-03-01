@@ -69,18 +69,11 @@ class LevelItemWidget extends StatelessWidget {
                 ),
                 Text(
                   "?",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
                 Text(
                   "${AppLocalizations.of(context).level} ${level.id}",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             )
@@ -90,7 +83,7 @@ class LevelItemWidget extends StatelessWidget {
               child: Icon(
                 Icons.lock,
                 size: MediaQuery.of(context).size.width / 3,
-                color: Color(0XFF9794b3),
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
         ],

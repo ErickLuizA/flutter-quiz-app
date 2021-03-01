@@ -35,11 +35,7 @@ class CategoryListWidget extends StatelessWidget {
                   ),
                   Text(
                     category.name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
               ),

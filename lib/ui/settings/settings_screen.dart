@@ -2,6 +2,8 @@ import 'package:Queszz/presentation/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,10 @@ class SettingsScreen extends StatelessWidget {
                       color: Theme.of(context).iconTheme.color,
                     ),
                     SizedBox(width: 10),
-                    Text("Theme", style: Theme.of(context).textTheme.bodyText1),
+                    Text(
+                      AppLocalizations.of(context).theme,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
                   ],
                 ),
               ),

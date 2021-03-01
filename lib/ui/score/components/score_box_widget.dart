@@ -29,10 +29,7 @@ class ScoreBoxWidget extends StatelessWidget {
           children: [
             Text(
               AppLocalizations.of(context).finalScore,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             ),
             SizedBox(height: 20),
             Row(
@@ -64,10 +61,7 @@ class ScoreBoxWidget extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               "${correctAnswers * 10}",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             ),
           ],
         ),

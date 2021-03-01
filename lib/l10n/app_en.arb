@@ -54,5 +54,8 @@
   "@wrongAnswers": {},
 
   "skipedAnswers": "Skiped Answers",
-  "@skipedAnswers": {}
+  "@skipedAnswers": {},
+
+  "theme": "Theme",
+  "@theme": {}
 }

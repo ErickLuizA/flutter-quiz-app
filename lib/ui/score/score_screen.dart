@@ -81,10 +81,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
               children: [
                 Text(
                   AppLocalizations.of(context).totalCorrectAnswers,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(height: 5),
                 Text(
@@ -106,7 +103,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  color: Color(0XFF9794b3),
+                  color: Theme.of(context).accentColor,
                   child: Text(
                     AppLocalizations.of(context).tryAgain,
                     style: TextStyle(color: Colors.white),
@@ -126,10 +123,10 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  color: Color(0XFF9794b3),
+                  color: Theme.of(context).accentColor,
                   child: Text(
                     AppLocalizations.of(context).keepGoing,
-                    style: TextStyle(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   onPressed: () {
                     Navigator.of(context)

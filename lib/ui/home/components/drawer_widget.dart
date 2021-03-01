@@ -20,9 +20,7 @@ class DrawerWidget extends StatelessWidget {
             ListTile(
               title: Text(
                 "Leadboard",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
             ListTile(
@@ -31,9 +29,7 @@ class DrawerWidget extends StatelessWidget {
               },
               title: Text(
                 "Statistics",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
           ],
