@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 class Category extends Equatable {
   final int id;
@@ -15,21 +15,15 @@ class Category extends Equatable {
   @override
   List<Object> get props => [id, name, image];
 
-  factory Category.fromMap(Map<String, dynamic> map) {
+  factory Category.fromMap(Map<String, dynamic> map, Locale locale) {
     if (map == null) return null;
+
+    final lang = locale.languageCode;
 
     return Category(
       id: map['category_id'],
-      name: map['category_name'],
+      name: lang == 'pt' ? map['category_name_pt'] : map['category_name'],
       image: map['category_image'],
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'category_id': id,
-      'category_name': name,
-      'category_image': image,
-    };
   }
 }

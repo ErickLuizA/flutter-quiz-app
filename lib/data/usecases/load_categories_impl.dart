@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'package:Queszz/data/repositories/categories_repository.dart';
@@ -14,7 +15,7 @@ class LoadCategoriesImpl implements LoadCategories {
   });
 
   @override
-  Future<Either<Failure, List<Category>>> load() {
-    return categoriesRepository.getCategories();
+  Future<Either<Failure, List<Category>>> load(Locale locale) {
+    return categoriesRepository.getCategories(locale);
   }
 }

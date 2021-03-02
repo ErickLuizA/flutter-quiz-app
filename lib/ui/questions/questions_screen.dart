@@ -1,6 +1,7 @@
 import 'package:Queszz/domain/usecases/load_questions.dart';
 import 'package:Queszz/presentation/viewmodels/questions_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:Queszz/domain/entities/category.dart';
 import 'package:Queszz/domain/entities/level.dart';
@@ -27,12 +28,16 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   void initState() {
     super.initState();
 
-    Provider.of<QuestionsViewModel>(context, listen: false).loadQuestions(
-      LoadQuestionsParams(
-        categoryId: widget.category.id,
-        levelId: widget.level.id,
-      ),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Provider.of<QuestionsViewModel>(context, listen: false)
+          .loadQuestions(
+        LoadQuestionsParams(
+          categoryId: widget.category.id,
+          levelId: widget.level.id,
+          locale: Locale("${AppLocalizations.of(context).localeName}", ""),
+        ),
+      );
+    });
   }
 
   @override

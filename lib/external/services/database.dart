@@ -6,17 +6,15 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseHelper {
   static Database _database;
 
-  Database get database {
-    return _database;
-  }
+  Database get database => _database;
 
   Future<void> initDb() async {
     final database = openDatabase(
       join(await getDatabasesPath(), 'queszz_database.db'),
       onCreate: (db, version) async {
-        await createTables(db);
+        await _createTables(db);
 
-        await insertSeeds(db);
+        await _insertSeeds(db);
       },
       version: 1,
     );
@@ -24,11 +22,12 @@ class DatabaseHelper {
     _database = await database;
   }
 
-  Future<void> createTables(Database db) async {
+  Future<void> _createTables(Database db) async {
     await db.execute("""
           CREATE TABLE Categories(
             category_id INTEGER PRIMARY KEY,
             category_name TEXT,
+            category_name_pt TEXT,
             category_image TEXT
           )
           """);
@@ -49,7 +48,9 @@ class DatabaseHelper {
             question_id INTEGER PRIMARY KEY,
             question_level_id INTEGER,
             question TEXT,
+            question_pt TEXT,
             answers TEXT,
+            answers_pt TEXT,
             correct INTEGER,
 
             FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
@@ -69,10 +70,11 @@ class DatabaseHelper {
           """);
   }
 
-  Future<void> insertSeeds(Database db) async {
+  Future<void> _insertSeeds(Database db) async {
     await db.insert('Categories', {
       "category_id": 1,
       "category_name": "General Knowledge",
+      "category_name_pt": "Conhecimento Geral",
       "category_image": "GeneralKnowledge"
     });
 
@@ -90,6 +92,8 @@ class DatabaseHelper {
         "question_level_id": i['question_level_id'],
         "question": i['question'],
         "answers": i['answers'],
+        "question_pt": i['question_pt'],
+        "answers_pt": i['answers_pt'],
         "correct": i['correct'],
       });
     });

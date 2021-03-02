@@ -23,7 +23,7 @@ class QuestionsLocalDatasourceImpl implements QuestionsLocalDatasource {
       """, [params.levelId, params.categoryId]);
 
       return List.generate(result.length, (i) {
-        return Question.fromMap(result[i]);
+        return Question.fromMap(result[i], params.locale);
       });
     } catch (e) {
       throw CacheException();

@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 class LoadQuestionsParams {
   final int levelId;
   final int categoryId;
+  final Locale locale;
   LoadQuestionsParams({
     @required this.levelId,
     @required this.categoryId,
+    @required this.locale,
   });
 }
 

@@ -13,12 +13,12 @@ class CategoriesLocalDatasourceImpl implements CategoriesLocalDatasource {
   });
 
   @override
-  Future<List<Category>> getCategories() async {
+  Future<List<Category>> getCategories(Locale locale) async {
     try {
       final result = await database.query('Categories');
 
       return List.generate(result.length, (i) {
-        return Category.fromMap(result[i]);
+        return Category.fromMap(result[i], locale);
       });
     } catch (e) {
       throw CacheException();

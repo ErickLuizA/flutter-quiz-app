@@ -15,10 +15,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    Provider.of<HomeViewModel>(context, listen: false).loadCategories();
+    Provider.of<HomeViewModel>(context, listen: false).loadCategories(
+      Locale("${AppLocalizations.of(context).localeName}", ""),
+    );
   }
 
   @override
@@ -62,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 LoadErrorWidget(
                   text: AppLocalizations.of(context).errorCategories,
                   retry: () {
-                    viewModel.loadCategories();
+                    viewModel.loadCategories(
+                      Locale("${AppLocalizations.of(context).localeName}", ""),
+                    );
                   },
                 ),
               if (viewModel.uiState == UIState.Success)

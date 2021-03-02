@@ -13,8 +13,8 @@ class HomeViewModel extends ChangeNotifier {
   List<Category> categoryList = List<Category>();
   UIState uiState = UIState.Loading;
 
-  Future<void> loadCategories() async {
-    final result = await _loadCategories.load();
+  Future<void> loadCategories(Locale locale) async {
+    final result = await _loadCategories.load(locale);
 
     result.fold(
       (failure) {
