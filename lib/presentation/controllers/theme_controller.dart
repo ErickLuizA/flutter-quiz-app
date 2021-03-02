@@ -4,12 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 const DARK = 'DARK';
 
 class ThemeController extends ChangeNotifier {
+  static ThemeController instance;
+
   SharedPreferences _sharedPreferences;
 
-  bool _isDark = true;
+  bool _isDark;
   bool get isDark => _isDark;
 
-  void load() async {
+  Future<void> load() async {
     _sharedPreferences = await SharedPreferences.getInstance();
 
     bool storageTheme = _sharedPreferences.getBool(DARK) == null ? false : true;

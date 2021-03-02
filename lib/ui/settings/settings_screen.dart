@@ -21,10 +21,10 @@ class SettingsScreen extends StatelessWidget {
               child: FlatButton(
                 color: Theme.of(context).accentColor,
                 padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(6)),
-                ),
-                onPressed: Provider.of<ThemeController>(context).toggleTheme,
+                onPressed: Provider.of<ThemeController>(
+                  context,
+                  listen: false,
+                ).toggleTheme,
                 child: Row(
                   children: [
                     Icon(
@@ -42,42 +42,40 @@ class SettingsScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              child: FlatButton(
+              child: PopupMenuButton(
                 color: Theme.of(context).accentColor,
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(6)),
-                ),
-                onPressed: () {
-                  PopupMenuButton(
-                    onSelected: (Locale selected) {
-                      Provider.of<LanguageController>(context)
-                          .setLocale(selected);
-                    },
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        child: Text("PT-BR"),
-                        value: Locale("pt", "BR"),
+                onSelected: Provider.of<LanguageController>(
+                  context,
+                  listen: false,
+                ).setLocale,
+                itemBuilder: (context) {
+                  return [
+                    PopupMenuItem(
+                      child: Text("PT-BR"),
+                      value: Locale("pt", "BR"),
+                    ),
+                    PopupMenuItem(
+                      child: Text("EN-US"),
+                      value: Locale("en", "US"),
+                    ),
+                  ];
+                },
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  color: Theme.of(context).accentColor,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.language,
+                        color: Theme.of(context).iconTheme.color,
                       ),
-                      PopupMenuItem(
-                        child: Text("EN-US"),
-                        value: Locale("en", "US"),
+                      SizedBox(width: 10),
+                      Text(
+                        AppLocalizations.of(context).language,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ],
-                  );
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.language,
-                      color: Theme.of(context).iconTheme.color,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      AppLocalizations.of(context).language,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

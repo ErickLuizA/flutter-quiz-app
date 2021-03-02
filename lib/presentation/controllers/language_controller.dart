@@ -4,12 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 const LANG = 'LANG';
 
 class LanguageController extends ChangeNotifier {
+  static LanguageController instance;
+
   SharedPreferences _sharedPreferences;
 
   Locale _currentLocale;
   Locale get currentLocale => _currentLocale;
 
-  void loadLocale(BuildContext context) async {
+  Future<void> loadLocale() async {
     _sharedPreferences = await SharedPreferences.getInstance();
 
     final storageLanguage = _sharedPreferences.getString(LANG);
@@ -23,8 +25,9 @@ class LanguageController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setLocale(Locale newLocale) async {
+  Future<void> setLocale(Locale newLocale) async {
     _currentLocale = newLocale;
+
     await _sharedPreferences.setString(
       LANG,
       "${newLocale.languageCode}, ${newLocale.countryCode}",
