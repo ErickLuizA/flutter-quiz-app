@@ -18,5 +18,6 @@
   "correctAnswers": "Repostas corretas",
   "wrongAnswers": "Repostas erradas",
   "skipedAnswers": "Repostas puladas",
-    "theme": "Tema"
+  "theme": "Tema",
+  "language": "Linguagem"
 }

@@ -57,5 +57,8 @@
   "@skipedAnswers": {},
 
   "theme": "Theme",
-  "@theme": {}
+  "@theme": {},
+
+  "language": "Language",
+  "@language": {}
 }

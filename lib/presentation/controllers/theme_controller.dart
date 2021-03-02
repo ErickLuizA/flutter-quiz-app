@@ -12,13 +12,7 @@ class ThemeController extends ChangeNotifier {
   void load() async {
     _sharedPreferences = await SharedPreferences.getInstance();
 
-    bool storageTheme;
-
-    try {
-      storageTheme = _sharedPreferences.getBool(DARK);
-    } catch (e) {
-      storageTheme = false;
-    }
+    bool storageTheme = _sharedPreferences.getBool(DARK) == null ? false : true;
 
     _isDark = storageTheme;
 
