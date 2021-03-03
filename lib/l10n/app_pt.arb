@@ -19,5 +19,11 @@
   "wrongAnswers": "Repostas erradas",
   "skipedAnswers": "Repostas puladas",
   "theme": "Tema",
-  "language": "Linguagem"
+  "language": "Rankings",
+  "leadboard": "Leadboard",
+  "statistics": "Estatísticas",
+  "loginFail": "Falha ao tentar logar",
+  "clickHere": "Clique aqui",
+  "toLogin": "Para logar",
+  "needToLogin": "Você precisa logar para ver os rankings"
 }

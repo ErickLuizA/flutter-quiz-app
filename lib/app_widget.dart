@@ -1,7 +1,3 @@
-import 'package:Queszz/main/factories/makeHomeViewModel.dart';
-import 'package:Queszz/main/factories/makeLevelsViewModel.dart';
-import 'package:Queszz/main/factories/makeScoreViewModel.dart';
-import 'package:Queszz/main/factories/makeStatisticsViewModel.dart';
 import 'package:Queszz/presentation/controllers/language_controller.dart';
 import 'package:Queszz/presentation/controllers/theme_controller.dart';
 import 'package:Queszz/themes.dart';
@@ -16,7 +12,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'main/controllers/makeAuthenticationController.dart';
+import 'main/factories/makeHomeViewModel.dart';
+import 'main/factories/makeLevelsViewModel.dart';
 import 'main/factories/makeQuestionsViewModel.dart';
+import 'main/factories/makeScoreViewModel.dart';
+import 'main/factories/makeStatisticsViewModel.dart';
 
 class App extends StatelessWidget {
   @override
@@ -28,6 +29,9 @@ class App extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => LanguageController.instance,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => makeAuthenticationController(),
         ),
       ],
       child: Consumer<LanguageController>(

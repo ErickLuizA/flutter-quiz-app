@@ -60,5 +60,23 @@
   "@theme": {},
 
   "language": "Language",
-  "@language": {}
+  "@language": {},
+
+  "leadboard": "Leadboard",
+  "@leadboard": {},
+
+  "statistics": "Statistics",
+  "@statistics": {},
+
+  "loginFail": "Failure in trying to login",
+  "@loginFail": {},
+
+  "clickHere": "Click Here",
+  "@clickHere": {},
+
+  "toLogin": "To Login",
+  "@toLogin": {},
+
+  "needToLogin": "You need to login to see the leadboard",
+  "@needToLogin": {}
 }
