@@ -4,7 +4,7 @@ import 'package:Queszz/domain/usecases/update_statistics.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class StatisticsRepository {
-  Future<void> updateStatistics(UpdateStatisticsParams params);
+  Future<Either<Failure, void>> updateStatistics(UpdateStatisticsParams params);
 
   Future<Either<Failure, Statistics>> getStatistics();
 }

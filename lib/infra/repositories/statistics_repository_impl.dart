@@ -14,7 +14,7 @@ class StatisticsRepositoryImpl implements StatisticsRepository {
   );
 
   @override
-  Future<void> updateStatistics(UpdateStatisticsParams params) async {
+  Future<Either<Failure, void>> updateStatistics(UpdateStatisticsParams params) async {
     try {
       final result = await _statisticsLocalDatasource.updateStatistic(params);
 

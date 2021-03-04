@@ -1,4 +1,6 @@
 import 'package:Queszz/domain/entities/statistics.dart';
+import 'package:Queszz/domain/helpers/failures.dart';
+import 'package:dartz/dartz.dart';
 
 class UpdateStatisticsParams {
   final Statistics statistics;
@@ -7,5 +9,5 @@ class UpdateStatisticsParams {
 }
 
 abstract class UpdateStatistics {
-  Future<void> update(UpdateStatisticsParams params);
+  Future<Either<Failure, void>> update(UpdateStatisticsParams params);
 }
