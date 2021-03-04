@@ -2,6 +2,7 @@ import 'package:Queszz/presentation/controllers/language_controller.dart';
 import 'package:Queszz/presentation/controllers/theme_controller.dart';
 import 'package:Queszz/themes.dart';
 import 'package:Queszz/ui/home/home_screen.dart';
+import 'package:Queszz/ui/leadboard/leadboard_screen.dart';
 import 'package:Queszz/ui/levels/levels_screen.dart';
 import 'package:Queszz/ui/questions/questions_screen.dart';
 import 'package:Queszz/ui/score/score_screen.dart';
@@ -117,6 +118,7 @@ class App extends StatelessWidget {
                     child: StatisticsScreen(),
                   ),
               '/settings': (context) => SettingsScreen(),
+              '/leadboard': (context) => LeadboardScreen(),
             },
           ),
         ),

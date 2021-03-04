@@ -61,6 +61,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
           gamesPlayed: 1,
           gamesWon: widget.correctAnswers >= 6 ? 1 : 0,
           gamesLost: widget.correctAnswers >= 6 ? 0 : 1,
+          queszzPoints: widget.correctAnswers == 10
+              ? 10
+              : widget.correctAnswers >= 8
+                  ? 5
+                  : widget.correctAnswers >= 6
+                      ? 1
+                      : 0,
         ),
       ),
     );

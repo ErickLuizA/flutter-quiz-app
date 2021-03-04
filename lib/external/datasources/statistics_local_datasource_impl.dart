@@ -24,7 +24,8 @@ class StatisticsLocalDatasourceImpl implements StatisticsLocalDatasource {
             skiped_answers = skiped_answers + ?,
             games_played = games_played + ?,
             games_won = games_won + ?,
-            games_lost = games_lost + ?
+            games_lost = games_lost + ?,
+            queszz_points = queszz_points + ?
         """,
         [
           params.statistics.totalAnswers,
@@ -34,6 +35,7 @@ class StatisticsLocalDatasourceImpl implements StatisticsLocalDatasource {
           params.statistics.gamesPlayed,
           params.statistics.gamesWon,
           params.statistics.gamesLost,
+          params.statistics.queszzPoints,
         ],
       );
 
