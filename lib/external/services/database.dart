@@ -1,5 +1,7 @@
+import 'package:Queszz/domain/constants/categories.dart';
+import 'package:Queszz/domain/constants/general_knowledge_questions.dart';
 import 'package:Queszz/domain/constants/levels.dart';
-import 'package:Queszz/domain/constants/questions.dart';
+import 'package:Queszz/domain/constants/programming_questions.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -34,7 +36,7 @@ class DatabaseHelper {
 
     await db.execute("""
           CREATE TABLE Levels(
-            level_id INTEGER PRIMARY KEY,
+            level_id INTEGER,
             level_category_id INTEGER,
             stars INTEGER,
             already_tried INTEGER,
@@ -46,6 +48,7 @@ class DatabaseHelper {
     await db.execute("""
           CREATE TABLE Questions(
             question_id INTEGER PRIMARY KEY,
+            question_category_id INTEGER,
             question_level_id INTEGER,
             question TEXT,
             question_pt TEXT,
@@ -53,7 +56,7 @@ class DatabaseHelper {
             answers_pt TEXT,
             correct INTEGER,
 
-            FOREIGN KEY(question_level_id) REFERENCES Levels(level_id)
+            FOREIGN KEY(question_category_id) REFERENCES Categories(category_id)
           )
           """);
 
@@ -70,42 +73,69 @@ class DatabaseHelper {
           """);
   }
 
-  Future<void> _insertSeeds(Database db) async {
-    await db.insert('Categories', {
-      "category_id": 1,
-      "category_name": "General Knowledge",
-      "category_name_pt": "Conhecimento Geral",
-      "category_image": "GeneralKnowledge"
+  Future<void> insertQuestions(
+    Database db,
+    Map<String, Object> question,
+    Map<String, Object> categorie,
+    int level,
+  ) async {
+    await db.insert('Questions', {
+      "question_level_id": level,
+      "question_category_id": categorie['category_id'],
+      "question": question['question'],
+      "answers": question['answers'],
+      "question_pt": question['question_pt'],
+      "answers_pt": question['answers_pt'],
+      "correct": question['correct'],
     });
+  }
 
-    LEVELS.forEach((i) async {
-      await db.insert('Levels', {
-        "level_id": i,
-        "level_category_id": 1,
-        "stars": 0,
-        "already_tried ": 0,
+  Future<void> _insertSeeds(Database db) async {
+    CATEGORIES.forEach((i) async {
+      await db.insert('Categories', {
+        "category_id": i['category_id'],
+        "category_name": i['category_name'],
+        "category_name_pt": i['category_name_pt'],
+        "category_image": i['category_image'],
       });
     });
 
-    QUESTIONS.forEach((i) async {
-      await db.insert('Questions', {
-        "question_level_id": i['question_level_id'],
-        "question": i['question'],
-        "answers": i['answers'],
-        "question_pt": i['question_pt'],
-        "answers_pt": i['answers_pt'],
-        "correct": i['correct'],
+    CATEGORIES.forEach((categorie) async {
+      LEVELS.forEach((i) async {
+        await db.insert('Levels', {
+          "level_id": i,
+          "level_category_id": categorie['category_id'],
+          "stars": 0,
+          "already_tried": 0,
+        });
+      });
+    });
+
+    CATEGORIES.forEach((categorie) async {
+      LEVELS.forEach((level) async {
+        switch (categorie['category_id']) {
+          case 1:
+            GENERALKNOWLEDGEQUESTIONS[level - 1].forEach((question) async {
+              await insertQuestions(db, question, categorie, level);
+            });
+            break;
+          case 2:
+            PROGRAMMINGQUESTIONS[level - 1].forEach((question) async {
+              await insertQuestions(db, question, categorie, level);
+            });
+            break;
+        }
       });
     });
 
     await db.insert('Statistics', {
-      "total_answers": "0",
-      "correct_answers": "0",
-      "wrong_answers": "0",
-      "skiped_answers": "0",
-      "games_played": "0",
-      "games_won": "0",
-      "games_lost": "0"
+      "total_answers": 0,
+      "correct_answers": 0,
+      "wrong_answers": 0,
+      "skiped_answers": 0,
+      "games_played": 0,
+      "games_won": 0,
+      "games_lost": 0
     });
   }
 }

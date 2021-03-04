@@ -17,9 +17,7 @@ class QuestionsLocalDatasourceImpl implements QuestionsLocalDatasource {
     try {
       final result = await database.rawQuery("""
         SELECT * FROM Questions
-        INNER JOIN Levels ON Levels.level_id = Questions.question_level_id
-        INNER JOIN Categories ON Categories.category_id = Levels.level_category_id
-        WHERE Levels.level_id = ? AND Categories.category_id = ?
+        WHERE Questions.question_level_id = ? AND Questions.question_category_id = ?
       """, [params.levelId, params.categoryId]);
 
       return List.generate(result.length, (i) {

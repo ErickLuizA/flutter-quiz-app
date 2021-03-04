@@ -33,7 +33,7 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/GeneralKnowledge.svg
+    - assets/
 
 
 flutter_intl:
