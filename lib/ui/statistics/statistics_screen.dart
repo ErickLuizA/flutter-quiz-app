@@ -84,6 +84,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             result: "${viewModel.statistics.skipedAnswers}",
                           ),
                           Divider(color: Colors.grey),
+                          StatisticItemWidget(
+                            text: AppLocalizations.of(context).queszzPoints,
+                            result: "${viewModel.statistics.queszzPoints}",
+                          ),
                         ],
                       ),
                     ),

@@ -29,7 +29,10 @@ class DrawerWidget extends StatelessWidget {
                   ),
                   ListTile(
                     onTap: () {
-                      Navigator.of(context).pushNamed('/leadboard');
+                      Navigator.of(context).pushNamed(
+                        '/leadboard',
+                        arguments: {"firebase_id": user.uid},
+                      );
                     },
                     title: Text(
                       AppLocalizations.of(context).leadboard,

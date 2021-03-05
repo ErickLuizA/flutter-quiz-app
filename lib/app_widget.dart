@@ -1,3 +1,4 @@
+import 'package:Queszz/main/factories/makeLeadboardViewModel.dart';
 import 'package:Queszz/presentation/controllers/language_controller.dart';
 import 'package:Queszz/presentation/controllers/theme_controller.dart';
 import 'package:Queszz/themes.dart';
@@ -106,6 +107,21 @@ class App extends StatelessWidget {
                 );
               }
 
+              if (settings.name == '/leadboard') {
+                final args = settings.arguments as Map;
+
+                return MaterialPageRoute(
+                  builder: (context) {
+                    return ChangeNotifierProvider(
+                      create: (context) => makeLeadboardViewModel(),
+                      child: LeadboardScreen(
+                        firebaseId: args['firebase_id'],
+                      ),
+                    );
+                  },
+                );
+              }
+
               return null;
             },
             routes: {
@@ -118,7 +134,6 @@ class App extends StatelessWidget {
                     child: StatisticsScreen(),
                   ),
               '/settings': (context) => SettingsScreen(),
-              '/leadboard': (context) => LeadboardScreen(),
             },
           ),
         ),

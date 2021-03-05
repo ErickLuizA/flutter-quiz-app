@@ -25,5 +25,6 @@
   "loginFail": "Falha ao tentar logar",
   "clickHere": "Clique aqui",
   "toLogin": "Para logar",
-  "needToLogin": "Você precisa logar para ver os rankings"
+  "needToLogin": "Você precisa logar para ver os rankings",
+  "queszzPoints": "Pontos Queszz"
 }

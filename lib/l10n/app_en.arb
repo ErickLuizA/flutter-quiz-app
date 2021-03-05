@@ -78,5 +78,8 @@
   "@toLogin": {},
 
   "needToLogin": "You need to login to see the leadboard",
-  "@needToLogin": {}
+  "@needToLogin": {},
+
+  "queszzPoints": "Queszz Points",
+  "@queszzPoints": {}
 }
