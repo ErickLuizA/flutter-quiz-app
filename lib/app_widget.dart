@@ -116,6 +116,7 @@ class App extends StatelessWidget {
                       create: (context) => makeLeadboardViewModel(),
                       child: LeadboardScreen(
                         firebaseId: args['firebase_id'],
+                        name: args['name'],
                       ),
                     );
                   },

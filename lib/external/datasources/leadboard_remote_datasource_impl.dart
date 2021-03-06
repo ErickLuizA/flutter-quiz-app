@@ -25,7 +25,17 @@ class LeadboardRemoteDatasourceImpl implements LeadboardRemoteDatasource {
 
       final leadboardColl = firestore.collection('leadboard');
 
-      return await leadboardColl.doc(params.firebaseId).set(statistic.toMap());
+      return await leadboardColl.doc(params.firebaseId).set({
+        "name": params.name,
+        'total_answers': statistic.totalAnswers,
+        'correct_answers': statistic.correctAnswers,
+        'wrong_answers': statistic.wrongAnswers,
+        'skiped_answers': statistic.skipedAnswers,
+        'games_played': statistic.gamesPlayed,
+        'games_won': statistic.gamesWon,
+        'games_lost': statistic.gamesLost,
+        'queszz_points': statistic.queszzPoints,
+      });
     } catch (e) {
       throw ServerException();
     }

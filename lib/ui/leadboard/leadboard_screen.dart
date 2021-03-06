@@ -1,4 +1,3 @@
-import 'package:Queszz/domain/entities/statistics.dart';
 import 'package:Queszz/domain/usecases/update_leadboard.dart';
 import 'package:Queszz/presentation/viewmodels/leadboard_viewmodel.dart';
 import 'package:Queszz/ui/shared/loading_widget.dart';
@@ -9,10 +8,12 @@ import 'package:provider/provider.dart';
 
 class LeadboardScreen extends StatefulWidget {
   final String firebaseId;
+  final String name;
 
   const LeadboardScreen({
     Key key,
     this.firebaseId,
+    this.name,
   }) : super(key: key);
 
   @override
@@ -27,6 +28,7 @@ class _LeadboardScreenState extends State<LeadboardScreen> {
     Provider.of<LeadboardViewModel>(context, listen: false).update(
       UpdateLeadboardParams(
         firebaseId: widget.firebaseId,
+        name: widget.name,
       ),
     );
   }
@@ -56,11 +58,14 @@ class _LeadboardScreenState extends State<LeadboardScreen> {
                     return ListView.builder(
                       itemCount: data.docs.length,
                       itemBuilder: (context, index) {
-                        final statistic = Statistics.fromMap(
-                          data.docs[index].data(),
-                        );
+                        final statistic = data.docs[index].data();
 
-                        return Text("${statistic.queszzPoints}");
+                        return Row(
+                          children: [
+                            Text(statistic['name']),
+                            Text(statistic['queszz_points']),
+                          ],
+                        );
                       },
                     );
                   }
