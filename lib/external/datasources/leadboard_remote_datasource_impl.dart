@@ -30,4 +30,11 @@ class LeadboardRemoteDatasourceImpl implements LeadboardRemoteDatasource {
       throw ServerException();
     }
   }
+
+  @override
+  Stream load() {
+    final leadboardColl = firestore.collection('leadboard');
+
+    return leadboardColl.snapshots();
+  }
 }

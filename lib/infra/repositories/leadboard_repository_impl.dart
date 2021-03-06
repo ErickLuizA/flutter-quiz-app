@@ -19,4 +19,9 @@ class LeadboardRepositoryImpl implements LeadboardRepository {
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Stream load() {
+    return _leadboardRemoteDatasource.load();
+  }
 }

@@ -4,4 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class LeadboardRepository {
   Future<Either<Failure, void>> update(UpdateLeadboardParams params);
+
+  Stream load();
 }

@@ -1,5 +1,7 @@
 import 'package:Queszz/data/repositories/leadboard_repository.dart';
+import 'package:Queszz/data/usecases/load_leadboard_impl.dart';
 import 'package:Queszz/data/usecases/update_leadboard_impl.dart';
+import 'package:Queszz/domain/usecases/load_leadboard.dart';
 import 'package:Queszz/domain/usecases/update_leadboard.dart';
 import 'package:Queszz/external/datasources/leadboard_remote_datasource_impl.dart';
 import 'package:Queszz/external/services/database.dart';
@@ -24,8 +26,13 @@ LeadboardViewModel makeLeadboardViewModel() {
     leadboardRepository,
   );
 
+  LoadLeadboard loadLeadboard = LoadLeadboardImpl(
+    leadboardRepository,
+  );
+
   LeadboardViewModel leadboardViewModel = LeadboardViewModel(
     updateLeadboard: updateLeadboard,
+    loadLeadboard: loadLeadboard,
   );
 
   return leadboardViewModel;
