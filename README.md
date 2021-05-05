@@ -23,7 +23,7 @@
   <a href="#clipboard-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#building_construction-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#framed_picture-screenshots">Screenshots</a>
 </p>
 
@@ -85,20 +85,22 @@ $ flutter run
 ## :framed_picture: Screenshots
 
 <div>
-  <img alt="Queszz screen" src="./assets/Home_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Levels_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Question_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Score_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/AfterStarLevels_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Settings_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Drawer.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Statistics_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./assets/Leadboard_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Home_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Levels_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Question_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Score_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/AfterStarLevels_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Settings_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Drawer.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Statistics_screen.png"  width="200"/>
+  <img alt="Queszz screen" src="./.github/Leadboard_screen.png"  width="200"/>
 </div>
 
 ## :information_source: TODO
-  - Tests
   - Be able to add new categories and levels through either online to offline synchronization using firebase or just put more in the database seeds and use UOA.
+  - Minor design fixes
+  - Tests
+  - Publish
 
 ## :memo: License
 
