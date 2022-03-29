@@ -1,7 +1,7 @@
-<h1 align="center"> Queszz </h1>
+<h1 align="center"> flutter-quiz-app </h1>
 
 <p align="center">
-  <a href="https://github.com/ErickLuizA/Queszz/graphs/commit-activity" alt="Maintenance">
+  <a href="https://github.com/ErickLuizA/flutter-quiz-app/graphs/commit-activity" alt="Maintenance">
     <img src="https://img.shields.io/badge/Maintained%3F-yes-1EAE72.svg" />
   </a>
 
@@ -11,12 +11,12 @@
 
 <br/>
 
-<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ErickLuizA/Queszz?color=blue">
+<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ErickLuizA/flutter-quiz-app?color=blue">
 
-<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ErickLuizA/Queszz">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ErickLuizA/flutter-quiz-app">
 
-<a href="https://github.com/ErickLuizA/Queszz/stargazers">
-  <img alt="GitHub stars" src="https://img.shields.io/github/stars/ErickLuizA/Queszz?style=social">
+<a href="https://github.com/ErickLuizA/flutter-quiz-app/stargazers">
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/ErickLuizA/flutter-quiz-app?style=social">
 </a>
 
 <p align="center">
@@ -27,11 +27,9 @@
   <a href="#framed_picture-screenshots">Screenshots</a>
 </p>
 
-
 ## :clipboard: Description
 
-Queszz is a quizz app built with flutter
-
+flutter-quiz-app is a quizz app built with flutter
 
 ## :building_construction: Technologies
 
@@ -49,27 +47,26 @@ Queszz is a quizz app built with flutter
   - [provider](https://pub.dev/packages/provider)
   - [flutter_svg](https://pub.dev/packages/flutter_svg)
 
-
 ## :rocket: Getting Started
 
 ## 1. Download the repository
 
 ```shell
- $ git clone https://github.com/ErickLuizA/Queszz.git
-  
-  or 
+ $ git clone https://github.com/ErickLuizA/flutter-quiz-app.git
 
- $ gh repo clone ErickLuizA/Queszz
+  or
+
+ $ gh repo clone ErickLuizA/flutter-quiz-app
 ```
 
 ## 2. Installation
 
 ```shell
 # Go into the repository
-$ cd Queszz
+$ cd flutter-quiz-app
 
 # Install dependencies
-$ flutter pub get 
+$ flutter pub get
 
 # or just use your IDE
 ```
@@ -85,26 +82,25 @@ $ flutter run
 ## :framed_picture: Screenshots
 
 <div>
-  <img alt="Queszz screen" src="./.github/Home_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Levels_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Question_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Score_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/AfterStarLevels_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Settings_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Drawer.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Statistics_screen.png"  width="200"/>
-  <img alt="Queszz screen" src="./.github/Leadboard_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Home_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Levels_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Question_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Score_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/AfterStarLevels_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Settings_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Drawer.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Statistics_screen.png"  width="200"/>
+  <img alt="flutter-quiz-app screen" src="./.github/Leadboard_screen.png"  width="200"/>
 </div>
 
 ## :information_source: TODO
-  - Be able to add new categories and levels through either online to offline synchronization using firebase or just put more in the database seeds and use UOA.
-  - Minor design fixes
-  - Tests
-  - Publish
+
+- Be able to add new categories and levels through either online to offline synchronization using firebase or just put more in the database seeds and use UOA.
+- Minor design fixes
+- Tests
+- Publish
 
 ## :memo: License
-
-
 
 This project is under the MIT license. See the file [LICENSE](LICENSE) for more details.
 
